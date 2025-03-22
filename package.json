@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "deploy": "next build && touch out/.nojekyll && git add out/ && git commit -m \"Deploy Next.js site to Pages\" && git subtree push --prefix out origin gh-pages"
+    "deploy": "rm -rf node_modules/.cache && next build && touch out/.nojekyll && git checkout gh-pages && git pull origin gh-pages && cp -r out/* . && git add . && git commit -m \"Deploy to GitHub Pages\" && git push origin gh-pages && git checkout main"
   },
   "dependencies": {
     "next": "^14.2.25",
